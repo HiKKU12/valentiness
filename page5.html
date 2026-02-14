@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You Always 💖</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.card img {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+#message {
+    text-align: left;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    background: #ff4d88;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ff1a66;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<img src="3.gif">
+
+<div id="message"></div>
+
+<button onclick="backHome()">Back to Start ❤️</button>
+
+</div>
+
+<script>
+
+const text = `Hii perd sana ayos lang ikaw palage and im here always kahit ano mangyare, thank you rin kasi di ka nag sasawa sakin kahit hindi ako ganon ka daldal, hindi ko masabayan pag vm mo or call pero promise ko pag nasanay me talaga hahaha. Hindi rin ako mag sasawa na intindihin ikaw kahit minsan medyo ooverthink ako pag medyo tahimik ka, nasasanay naman na ako pag ganon ikaw kasi nga avoidant pero wala ako pake basta ikaw gusto ko hindi naman yan rason para lumayo loob ko sayo eh.
+
+Wala rin ako nakakausap na iba baby ikaw lang talaga want ko kahit magsawa ako kaka scroll sa tiktok di ako maghahanap sapat na ikaw sakin hahaha sobra sobra pa.
+
+Thank you sa lahat, ilove u - bai na bai ❤️`;
+
+let i = 0;
+const speed = 35;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+typeWriter();
+
+function backHome(){
+    window.location.href = "index.html";
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*3+2)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },5000);
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
